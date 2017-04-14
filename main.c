@@ -20,13 +20,19 @@ int main(void)
     }
     matrix_check_null_rows(&mat);
     printf("\n\n");
-    for (int i = 0; i < mat.entries; ++i)
-    	printf("column=%d, val=(%.2lf + %.2lfi)\n", mat.column[i], creal(mat.elem[i]), cimag(mat.elem[i]));
 
+    for (int i = 0; i < mat.entries; ++i)
+    	printf("column=%d, val=(%.2lf + %.2lfi); ", mat.column[i], creal(mat.elem[i]), cimag(mat.elem[i]));
+    printf("\n\n");
+
+    printf("Матрица %d на %d:\n", mat.n, mat.m);
     for (int i = 0; i <= mat.n; ++i)
     	printf("%d ", mat.rowp[i]);
-    printf("\n");
+    printf("\n\n");
     matrix_print(&mat);
+
+	find_row_with_max_nonzero_elements(&mat);
+	printf("\n");
 
     matrix_destroy(&mat);	
     return 0;
