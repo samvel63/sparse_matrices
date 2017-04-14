@@ -13,11 +13,11 @@ typedef struct {
 	elem_type *elem;
 } Matrix;
 
-void create(Matrix *mat, int n, int m); // Create Matrix
-void destroy(Matrix *mat); // Destroy Matrix
-void insert(Matrix *mat, int i, int j, elem_type val); // Add element in array of notzero elements
-elem_type get(Matrix *mat, int i, int j);
-void print(Matrix *mat);
-void CheckOnNullRows(Matrix *mat);
+void matrix_create(Matrix *mat, int n, int m);
+void matrix_destroy(Matrix *mat);
+void matrix_set(Matrix *mat, int i, int j, elem_type val);
+void matrix_check_null_rows(Matrix *mat);
+elem_type matrix_get(Matrix *mat, int i, int j);
+void matrix_print(Matrix *mat);
 
 #endif

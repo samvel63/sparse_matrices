@@ -10,7 +10,7 @@ int main(void)
 	elem_type val;
 	Matrix mat;
 	scanf("%d %d", &n, &m);
-    create(&mat, n, m);
+    matrix_create(&mat, n, m);
     int x = 0;
     //double x = 0.0, y = 0.0;
     for (int i = 0; i < n; ++i) {
@@ -18,11 +18,11 @@ int main(void)
     		scanf("%d", &x);
     		//scanf("%lf %lf", &x, &y);
     		//val = x + y * I;
-    		insert(&mat, i, j, x);
+    		matrix_set(&mat, i, j, x);
     		//printf("%.2lf %.2lf", creal(val), cimag(val));
     	}
     }
-    CheckOnNullRows(&mat);
+    matrix_check_null_rows(&mat);
     for (int i = 0; i < mat.n; ++i)
     	printf("%d\n", mat.rowp[i]);
 
@@ -32,6 +32,8 @@ int main(void)
     for (int i = 0; i <= mat.n; ++i)
     	printf("%d ", mat.rowp[i]);
     printf("\n");
-    print(&mat);	
+    matrix_print(&mat);
+
+    matrix_destroy(&mat);	
     return 0;
 }

@@ -4,7 +4,7 @@
 #include <string.h>
 #include "matrix.h"
 
-void create(Matrix *mat, int n, int m)
+void matrix_create(Matrix *mat, int n, int m)
 {
 	mat->n = n;
 	mat->m = m;
@@ -16,14 +16,14 @@ void create(Matrix *mat, int n, int m)
 	mat->column[0] = 0;
 }
 
-void destroy(Matrix *mat)
+void matrix_destroy(Matrix *mat)
 {
 	free(mat->rowp);
 	free(mat->column);
 	free(mat->elem);
 }
 
-void insert(Matrix *mat, int i, int j, elem_type val)
+void matrix_set(Matrix *mat, int i, int j, elem_type val)
 {
 	if (val == 0)
 		return;
@@ -37,7 +37,7 @@ void insert(Matrix *mat, int i, int j, elem_type val)
 	mat->elem[mat->entries - 1] = val;
 }
 
-void CheckOnNullRows(Matrix *mat)
+void matrix_check_null_rows(Matrix *mat)
 {
 	for (int i = 0; i < mat->n; ++i) {
 		if (mat->rowp[i] == mat->rowp[i + 1])
@@ -45,7 +45,7 @@ void CheckOnNullRows(Matrix *mat)
 	}
 }
 
-elem_type get(Matrix *mat, int i, int j)
+elem_type matrix_get(Matrix *mat, int i, int j)
 {
 	if (mat->rowp[i] == -1)
 		return 0;
@@ -60,11 +60,11 @@ elem_type get(Matrix *mat, int i, int j)
 	return 0;
 }
 
-void print(Matrix *mat)
+void matrix_print(Matrix *mat)
 {
 	for (int i = 0; i < mat->n; ++i) {
 		for (int j = 0; j < mat->m; ++j)
-			printf("%d ", get(mat, i, j));
+			printf("%d ", matrix_get(mat, i, j));
 		printf("\n");
 	}
 }
