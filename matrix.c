@@ -52,9 +52,12 @@ elem_type matrix_get(Matrix *mat, int i, int j)
 	for (int k = i + 1; k <= mat->n; ++k) {
 		if (mat->rowp[k] != -1) {
 			for (int l = mat->rowp[i]; l < mat->rowp[k]; ++l) {
-				if (mat->column[l] == j)
-					return mat->elem[l];
+				if (mat->column[l] == j) {
+					return mat->elem[l];					
+				}
+
 			}
+			break;
 		}
 	}
 	return 0;
@@ -63,8 +66,10 @@ elem_type matrix_get(Matrix *mat, int i, int j)
 void matrix_print(Matrix *mat)
 {
 	for (int i = 0; i < mat->n; ++i) {
-		for (int j = 0; j < mat->m; ++j)
-			printf("%d ", matrix_get(mat, i, j));
+		for (int j = 0; j < mat->m; ++j) {
+			elem_type num = matrix_get(mat, i, j);
+			printf("(%.2lf + %.2lfi) ", creal(num), cimag(num));			
+		}
 		printf("\n");
 	}
 }

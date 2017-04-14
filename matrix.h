@@ -2,7 +2,7 @@
 #define _MATRIX_H_
 
 //typedef double complex elem_type;
-typedef int elem_type;
+typedef complex double elem_type;
 
 typedef struct {
 	int n;
