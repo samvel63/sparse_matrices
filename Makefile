@@ -1,6 +1,6 @@
 CC = gcc
-LDFLAGS =-std=c99 -Wall -Wextra -Werror -Wshadow -Wstrict-prototypes -Wold-style-definition -pedantic -O2 -Wno-unused-variable -Wno-sign-compare -Wno-unused-variable -Wno-unused-result -Wno-unused-parameter
-CFLAGS =-c -std=c99 -Wall -Wextra -Werror -Wshadow -Wstrict-prototypes -Wold-style-definition -pedantic -O2 -Wno-unused-variable -Wno-sign-compare -Wno-unused-variable -Wno-unused-result -Wno-unused-parameter
+LDFLAGS =-std=c99
+CFLAGS =-c -std=c99
 SOURCES = main.o matrix.o
 EXECUTABLE = start
 

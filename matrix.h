@@ -1,7 +1,6 @@
 #ifndef _MATRIX_H_
 #define _MATRIX_H_
 
-//typedef double complex elem_type;
 typedef complex double elem_type;
 
 typedef struct {
@@ -19,8 +18,9 @@ void matrix_set(Matrix *mat, int i, int j, elem_type val);
 void matrix_check_null_rows(Matrix *mat);
 elem_type matrix_get(Matrix *mat, int i, int j);
 
-void matrix_print(Matrix *mat);
-void matrix_print_sum_row_elements(Matrix *mat, int i, elem_type sum);
+void print_full_matrix(Matrix *mat);
+void print_sum_row_elements(Matrix *mat, int i, elem_type sum);
+void print_in_computer_view(Matrix *mat);
 
 void find_row_with_max_nonzero_elements(Matrix *mat);
 

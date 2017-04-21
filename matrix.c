@@ -63,7 +63,7 @@ elem_type matrix_get(Matrix *mat, int i, int j)
 	return 0;
 }
 
-void matrix_print(Matrix *mat)
+void print_full_matrix(Matrix *mat)
 {
 	for (int i = 0; i < mat->n; ++i) {
 		for (int j = 0; j < mat->m; ++j) {
@@ -75,9 +75,9 @@ void matrix_print(Matrix *mat)
 	printf("\n");
 }
 
-void matrix_print_sum_row_elements(Matrix *mat, int i, elem_type sum)
+void print_sum_row_elements(Matrix *mat, int i, elem_type sum)
 {
-	printf("Строка под номером %d содержит наибольшее количество ненулевых элементов, а их сумма == %.2lf + %.2lfi\n\n", i, creal(sum), cimag(sum));
+	printf("Строка под номером %d содержит наибольшее количество ненулевых элементов, а их сумма == %.2lf + %.2lfi\n\n", i + 1, creal(sum), cimag(sum));
 }
 
 void find_row_with_max_nonzero_elements(Matrix *mat)
@@ -100,6 +100,23 @@ void find_row_with_max_nonzero_elements(Matrix *mat)
 
 	for (int i = 0; i < mat->n; ++i) {
 		if (max_elems == nonzero_elems_in_row[i])
-			matrix_print_sum_row_elements(mat, i, sum_row_elems[i]);
+			print_sum_row_elements(mat, i, sum_row_elems[i]);
 	}
+}
+
+void print_in_computer_view(Matrix *mat)
+{
+	printf("CIP: ");
+    for (int i = 0; i < mat->n; ++i)
+    	printf("%d ", mat->rowp[i]);
+    printf("\n\n");
+
+    printf("PI: ");
+    for (int i = 0; i < mat->entries; ++i)
+    	printf("      %d       ", mat->column[i]);
+    printf("\n");
+
+    printf("YE: ");
+    for (int i = 0; i < mat->entries; ++i)
+    	printf("(%.2lf + %.2lf) ", creal(mat->elem[i]), cimag(mat->elem[i]));
 }
